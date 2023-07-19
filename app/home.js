@@ -9,17 +9,21 @@ export default function Post({ posts }) {
         <Container>
           <div className="grid gap-10 md:grid-cols-2 lg:gap-10 ">
             {posts.slice(0, 2).map(post => (
+              <Link
+              href='/postData'
+              >
               <PostList
                 key={post._id}
                 post={post}
                 aspect="landscape"
                 preloadImage={true}
               />
+              </Link>
             ))}
           </div>
           <div className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3 ">
             {posts.slice(2, 14).map(post => (
-              <PostList key={post._id} post={post} aspect="square" />
+             <Link href='/postData'><PostList key={post._id} post={post} aspect="square" /></Link> 
             ))}
           </div>
           <div className="mt-10 flex justify-center">

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cx } from "../utils";
+import { cx } from "../utils/all";
 
 // import { parseISO, format } from "date-fns";
 // import { PhotoIcon } from "@heroicons/react/24/outline";
- import CategoryLabel from "@/app/components/category"; 
+ import CategoryLabel from "../components/category"; 
 
 export default function PostList({
   post,
@@ -18,9 +18,9 @@ export default function PostList({
   // const imageProps = post?.mainImage
   //   ? urlForImage(post.mainImage)
   //   : null;
-  const AuthorimageProps = post?.author?.image
-    ? urlForImage(post.author.image)
-    : null;
+  // const AuthorimageProps = post?.author?.image
+  //   ? urlForImage(post.author.image)
+  //   : null;
 
     console.log('postlist',post)
   return (
@@ -34,7 +34,7 @@ export default function PostList({
           className={cx(
             " overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105   dark:bg-gray-800"
           )}>
-          <Link
+          {/* <Link
             className={cx(
               "relative block",
               aspect === "landscape"
@@ -43,7 +43,19 @@ export default function PostList({
                 ? "aspect-[5/4]"
                 : "aspect-square"
             )}
-            href={`/post/${post}`}>
+            // href={`/post/${post.author.name}`}
+            > */}
+            <div
+             className={cx(
+              "relative block",
+              aspect === "landscape"
+                ? "aspect-video"
+                : aspect === "custom"
+                ? "aspect-[5/4]"
+                : "aspect-square"
+            )}
+            
+            >
             {post.mainImage ? (
               <Image
                 src={post.mainImage}
@@ -62,7 +74,8 @@ export default function PostList({
                 <PhotoIcon />
               </span>
             )}
-          </Link>
+            </div>
+          {/* </Link> */}
         </div>
 
         <div className={cx(minimal && "flex items-center")}>
@@ -83,8 +96,9 @@ export default function PostList({
                   : "font-semibold leading-snug tracking-tight",
                 "mt-2    dark:text-white"
               )}>
-              <Link
-                href={`/post/${post.slug}`}>
+              {/* <Link
+                // href={`/post/${post.slug}`}
+                > */}
                 <span
                   className="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom
       bg-no-repeat
@@ -95,22 +109,23 @@ export default function PostList({
       dark:from-purple-800 dark:to-purple-900">
                   {post.title}
                 </span>
-              </Link>
+              {/* </Link> */}
             </h2>
 
             <div className="hidden">
               {post.id && (
                 <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-gray-400">
-                  <Link
-                    href={`/post/${post.id}`}>
+                  {/* <Link
+                    // href={`/post/${post.id}`}
+                    > */}
                     {post.id}
-                  </Link>
+                  {/* </Link> */}
                 </p>
               )}
             </div>
 
             <div className="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
-              <Link href={`/author/${post.slug}`}>
+              {/* <Link href={`/author/${post.slug}`}> */}
                 <div className="flex items-center gap-3">
                   <div className="relative h-5 w-5 flex-shrink-0">
                     {post?.author?.image && (
@@ -127,7 +142,7 @@ export default function PostList({
                     {post?.author?.name}
                   </span>
                 </div>
-              </Link>
+              {/* </Link> */}
               <span className="text-xs text-gray-300 dark:text-gray-600">
                 &bull;
               </span>

@@ -1,4 +1,4 @@
-import { cx } from "@/app/utils/all";
+import { cx } from "../utils/all";
 
 export default function Label(props) {
   const color = {
